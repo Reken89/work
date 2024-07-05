@@ -14,8 +14,10 @@ class TaskAddRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'title'   => 'required|string',
             'status'  => 'required|string',
             'date'    => 'required|string',
+            'dedline' => 'required|string',
             'content' => 'required|string',
         ];
     }   

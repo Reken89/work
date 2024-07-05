@@ -28,7 +28,7 @@ class TaskController extends Controller
     public function ReadTasks()
     {
         $info = $this->action(TaskRead::class)->SelectAllTasks();  
-        return view('task.show', ['info' => $info]);            
+        return view('task.show', ['info' => $info]);      
     }
     
     /**

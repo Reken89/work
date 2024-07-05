@@ -10,7 +10,9 @@ class TaskUpdateDto extends BaseDto
     public int       $id;
     public string    $status;
     public string    $date;
+    public string    $dedline;
     public string    $content;
+    public string    $title;
 
     /**
      * Возвращает DTO из объекта Request
@@ -24,7 +26,9 @@ class TaskUpdateDto extends BaseDto
             'id'      => $request->get('id'),
             'status'  => $request->get('status'),
             'date'    => $request->get('date'),
+            'dedline' => $request->get('dedline'),
             'content' => $request->get('content'),
+            'title'   => $request->get('title'),
         ]);
     }
 }

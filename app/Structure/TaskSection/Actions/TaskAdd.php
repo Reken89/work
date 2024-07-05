@@ -17,6 +17,8 @@ class TaskAdd
     {   
         $result = Task::create([
             'date'    => $dto->date,
+            'dedline' => $dto->dedline,
+            'title'   => $dto->title,
             'content' => $dto->content,
             'status'  => $dto->status,
         ]);

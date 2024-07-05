@@ -18,7 +18,9 @@ class TaskUpdate
         $result = Task::find($dto->id)
             ->update([                
                 'content' => $dto->content,
+                'title'   => $dto->title,
                 'date'    => $dto->date,
+                'dedline' => $dto->dedline,
                 'status'  => $dto->status,
             ]);
         

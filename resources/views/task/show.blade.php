@@ -155,9 +155,11 @@
                             <div class="account__table--area">
                                 <table class="table">
                                     <thead>
-                                        <tr>                                                                                  
+                                        <tr>
+                                            <th style="min-width: 150px; width: 150px;" bgcolor="#66CDAA">Заголовок</th>  
                                             <th style="min-width: 200px; width: 200px;" bgcolor="#66CDAA">Содержание</th>  
-                                            <th style="min-width: 100px; width: 100px;" bgcolor="#66CDAA">Дата</th>    
+                                            <th style="min-width: 100px; width: 100px;" bgcolor="#66CDAA">Дата</th>
+                                            <th style="min-width: 100px; width: 100px;" bgcolor="#66CDAA">Dedline</th>  
                                             <th style="min-width: 100px; width: 100px;" bgcolor="#66CDAA">Статус</th> 
                                             <th style="min-width: 100px; width: 100px;" bgcolor="#66CDAA">Добавить/Изменить</th> 
                                             <th style="min-width: 100px; width: 100px;" bgcolor="#66CDAA">Удалить</th> 
@@ -166,10 +168,14 @@
                                     <tbody>
                                         <form action="/work/public/add" method="post">
                                         @csrf    
-                                        <tr>                                           
+                                        <tr>   
+                                            <td class="col-id-no" scope="row"><textarea rows='3' cols='20' type=text name="title" class="content">Заголовок</textarea></td> 
                                             <td class="col-id-no" scope="row"><textarea rows='3' cols='20' type=text name="content" class="content">Содержание</textarea></td> 
                                             <td>
                                                 <input type="date" value="<?php echo date('Y-m-d'); ?>" id="date" name="date" class="date"/>
+                                            </td>
+                                            <td>
+                                                <input type="date" value="<?php echo date('Y-m-d'); ?>" id="dedline" name="dedline" class="date"/>
                                             </td>
                                             <td>
                                                 <select id="status" style="min-width: 130px; width: 130px;" name="status" class="status">
@@ -190,8 +196,10 @@
                                                     @csrf
                                                     @method('patch')
                                                     <input type="hidden" name="id" value="{{ $value['id'] }}">
+                                                    <td class="col-id-no" scope="row"><textarea rows='3' cols='20' type=text name="title" class="title">{{ $value['title'] }}</textarea></td>
                                                     <td class="col-id-no" scope="row"><textarea rows='3' cols='20' type=text name="content" class="content">{{ $value['content'] }}</textarea></td>
                                                     <td><input type="date" value="{{ $value['date'] }}" id="date" name="date" class="date"/></td>
+                                                    <td><input type="date" value="{{ $value['dedline'] }}" id="dedline" name="dedline" class="dedline"/></td>
                                                     <td>   
                                                         <select id="fruits" style="min-width: 200px; width: 200px;" name="status" class="correspondent">
                                                             <option selected value="{{ $value['status'] }}">{{ $status[$value['status']] }}</option>

@@ -9,7 +9,9 @@ class TaskAddDto extends BaseDto
 {
     public string    $status;
     public string    $date;
+    public string    $dedline;
     public string    $content;
+    public string    $title;
 
     /**
      * Возвращает DTO из объекта Request
@@ -22,7 +24,9 @@ class TaskAddDto extends BaseDto
         return new self([
             'status'  => $request->get('status'),
             'date'    => $request->get('date'),
+            'dedline' => $request->get('dedline'),
             'content' => $request->get('content'),
+            'title'   => $request->get('title'),
         ]);
     }
 }

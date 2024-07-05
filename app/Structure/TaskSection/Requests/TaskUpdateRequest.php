@@ -15,8 +15,10 @@ class TaskUpdateRequest extends FormRequest
     {
         return [
             'id'      => 'required|integer',
+            'title'   => 'required|string',
             'status'  => 'required|string',
             'date'    => 'required|string',
+            'dedline' => 'required|string',
             'content' => 'required|string',
         ];
     }   
