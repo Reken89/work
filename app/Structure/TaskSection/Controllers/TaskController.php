@@ -67,7 +67,7 @@ class TaskController extends Controller
     }
     
     /**
-     * Удаляем запись в таблице tasks
+     * Обновляем запись в таблице tasks
      *
      * @param TaskUpdateRequest $request
      * @return
