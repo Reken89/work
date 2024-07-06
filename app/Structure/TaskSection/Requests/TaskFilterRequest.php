@@ -14,8 +14,8 @@ class TaskFilterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'datestart' => 'required|string',
-            'datestop'  => 'required|string',
+            'datestart' => 'required|string|date',
+            'datestop'  => 'required|string|date',
             'status'    => 'required|array',
         ];
     }   

@@ -15,11 +15,11 @@ class TaskUpdateRequest extends FormRequest
     {
         return [
             'id'      => 'required|integer',
-            'title'   => 'required|string',
-            'status'  => 'required|string',
-            'date'    => 'required|string',
-            'dedline' => 'required|string',
-            'content' => 'required|string',
+            'title'   => 'required|string|max:100',
+            'status'  => 'required|string|max:50',
+            'date'    => 'required|string|date',
+            'dedline' => 'required|string|date',
+            'content' => 'required|string|max:255',
         ];
     }   
 }
