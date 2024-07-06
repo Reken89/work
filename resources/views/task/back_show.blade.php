@@ -76,81 +76,10 @@
     <!-- End header area -->
 
     <main class="main__content_wrapper">
-
         
         <!-- my account section start -->
         <section class="my__account--section section--padding">
             
-                <form action="/work/public/filter" method="get"> 
-                
-                <section class="shipping__section">
-            <div class="container">
-                <p>Список фильтров:</p>
-                    <b><u>Дата "начало"</u></b> - Выбрать документы начиная с даты</br>
-                    <b><u>Дата "конец"</u></b> - Выбрать документу по дату</br>
-                    <b><u>Статус</u></b> - Выбрать статус задания
-                </p>
-                <div class="shipping__inner style2 d-flex">
-                    <div class="shipping__items style2 d-flex align-items-center">                       
-                        <div class="shipping__content">
-                            <h2 class="shipping__content--title h3">Дата "начало"</h2>
-                            <div class="single__widget widget__bg">
-                            <ul class="widget__form--check">                               
-                                <li class="widget__form--check__list">
-                                    <input type="date" value="2024-01-01" id="date" name="datestart" class="date"/>
-                                </li>
-                            </ul>
-                            </div>    
-                        </div>
-                    </div>
-                    <div class="shipping__items style2 d-flex align-items-center">                       
-                        <div class="shipping__content">
-                            <h2 class="shipping__content--title h3">Дата "конец"</h2>
-                            <div class="single__widget widget__bg">
-                            <ul class="widget__form--check">                               
-                                <li class="widget__form--check__list">
-                                    <input type="date" value="2024-12-31" id="date" name="datestop" class="date"/>
-                                </li>
-                            </ul>
-                            </div>    
-                        </div>
-                    </div>
-                    <div class="shipping__items style2 d-flex align-items-center">                       
-                        <div class="shipping__content">
-                            <h2 class="shipping__content--title h3">Статус</h2>
-                            <div class="single__widget widget__bg">
-                            <ul class="widget__form--check">                               
-                                <li class="widget__form--check__list">
-                                    <label class="widget__form--check__label" for="check1">В работе</label>
-                                    <input class="widget__form--check__input" name="status[]" value="work" type="checkbox">
-                                    <span class="widget__form--checkmark"></span>
-                                </li>
-                                <li class="widget__form--check__list">
-                                    <label class="widget__form--check__label" for="check2">Завершена</label>
-                                    <input class="widget__form--check__input" name="status[]" value="completed" type="checkbox">
-                                    <span class="widget__form--checkmark"></span>
-                                </li>
-                                <li class="widget__form--check__list">
-                                    <label class="widget__form--check__label" for="check3">Важно</label>
-                                    <input class="widget__form--check__input" name="status[]" value="important" type="checkbox">
-                                    <span class="widget__form--checkmark"></span>
-                                </li>                              
-                            </ul>
-                            </div>    
-                        </div>
-                    </div>
-                                                                                               
-                    
-                </div>
-                <div class="shipping__items style2 d-flex align-items-center">                        
-                    <div class="shipping__content">                           
-                        <button style="width:200px;height:50px" class="primary__btn price__filter--btn" type="submit">Фильтр</button>
-                        </br>
-                        </form>    
-                        <br>
-                    </div>
-                </div>
-                
                 <div class="my__account--section__inner border-radius-10 d-flex">
                     <div class="account__wrapper">
                         <div class="account__content">
@@ -223,14 +152,9 @@
                 
             </div>                   
         </section>
-        
-                      
-                
-            
+                  
         </section>
-        <!-- my account section end -->
-
-     
+        <!-- my account section end -->  
 
     </main>
 

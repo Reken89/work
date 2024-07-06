@@ -14,6 +14,8 @@ Route::get('/filter', [TaskController::class, 'FilterTask']);
 //Роуты для работы фронта
 Route::get('/tasks/back', [TaskViewController::class, 'ShowBack']);
 Route::get('/tasks', [TaskViewController::class, 'ShowFront']);
+Route::get('/choice/back', [TaskViewController::class, 'FilterBack']);
+Route::get('/choice', [TaskViewController::class, 'FilterFront']);
 
 Route::get('/', function () {
     return view('welcome');

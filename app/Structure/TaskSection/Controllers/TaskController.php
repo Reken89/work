@@ -76,13 +76,13 @@ class TaskController extends Controller
      * Применяя необходимые фильтры (date и status)
      *
      * @param TaskFilterRequest $request
-     * @return
+     * @return json
      */
     public function FilterTask(TaskFilterRequest $request)
     {   
         $dto = TaskFilterDto::fromRequest($request);
-        $info = $this->action(TaskFilterRead::class)->SelectTasks($dto);
-        return view('task.show', ['info' => $info]); 
+        $result = $this->action(TaskFilterRead::class)->SelectTasks($dto);
+        return  response()->json($result);
              
     }
     

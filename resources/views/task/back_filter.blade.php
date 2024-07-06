@@ -1,13 +1,3 @@
-@php
-    //Вспомогательный массив
-    //Для корректного вывода информации из таблицы
-    $status = [
-        "work"      => "В работе",
-        "completed" => "Завершена",
-        "important" => "Важно",
-    ];
-@endphp
-
 <!doctype html>
 <html lang="en">
 
@@ -77,7 +67,7 @@
         <!-- my account section start -->
         <section class="my__account--section section--padding">
             
-                <form action="/work/public/filter" method="get"> 
+                <form id="filter" method="get"> 
                 
                 <section class="shipping__section">
             <div class="container">
@@ -118,17 +108,17 @@
                             <ul class="widget__form--check">                               
                                 <li class="widget__form--check__list">
                                     <label class="widget__form--check__label" for="check1">В работе</label>
-                                    <input class="widget__form--check__input" name="status[]" value="work" type="checkbox">
+                                    <input class="widget__form--check__input" name="status" value="work" type="checkbox">
                                     <span class="widget__form--checkmark"></span>
                                 </li>
                                 <li class="widget__form--check__list">
                                     <label class="widget__form--check__label" for="check2">Завершена</label>
-                                    <input class="widget__form--check__input" name="status[]" value="completed" type="checkbox">
+                                    <input class="widget__form--check__input" name="status" value="completed" type="checkbox">
                                     <span class="widget__form--checkmark"></span>
                                 </li>
                                 <li class="widget__form--check__list">
                                     <label class="widget__form--check__label" for="check3">Важно</label>
-                                    <input class="widget__form--check__input" name="status[]" value="important" type="checkbox">
+                                    <input class="widget__form--check__input" name="status" value="important" type="checkbox">
                                     <span class="widget__form--checkmark"></span>
                                 </li>                              
                             </ul>
@@ -140,93 +130,13 @@
                 </div>
                 <div class="shipping__items style2 d-flex align-items-center">                        
                     <div class="shipping__content">                           
-                        <button style="width:200px;height:50px" class="primary__btn price__filter--btn" type="submit">Фильтр</button>
+                        <button style="width:200px;height:50px" class="primary__btn price__filter--btn" id="apply" type="button">Фильтр</button>
                         </br>
                         </form>    
                         <br>
                     </div>
                 </div>
                 
-                <div class="my__account--section__inner border-radius-10 d-flex">
-                    <div class="account__wrapper">
-                        <div class="account__content">
-                            <p><u>Таблица</u></p>
-                           
-                            <div class="account__table--area">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th style="min-width: 150px; width: 150px;" bgcolor="#66CDAA">Заголовок</th>  
-                                            <th style="min-width: 200px; width: 200px;" bgcolor="#66CDAA">Содержание</th>  
-                                            <th style="min-width: 100px; width: 100px;" bgcolor="#66CDAA">Дата</th>
-                                            <th style="min-width: 100px; width: 100px;" bgcolor="#66CDAA">Dedline</th>  
-                                            <th style="min-width: 100px; width: 100px;" bgcolor="#66CDAA">Статус</th> 
-                                            <th style="min-width: 100px; width: 100px;" bgcolor="#66CDAA">Добавить/Изменить</th> 
-                                            <th style="min-width: 100px; width: 100px;" bgcolor="#66CDAA">Удалить</th> 
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <form action="/work/public/add" method="post">
-                                        @csrf    
-                                        <tr>   
-                                            <td class="col-id-no" scope="row"><textarea rows='3' cols='20' type=text name="title" class="content">Заголовок</textarea></td> 
-                                            <td class="col-id-no" scope="row"><textarea rows='3' cols='20' type=text name="content" class="content">Содержание</textarea></td> 
-                                            <td>
-                                                <input type="date" value="<?php echo date('Y-m-d'); ?>" id="date" name="date" class="date"/>
-                                            </td>
-                                            <td>
-                                                <input type="date" value="<?php echo date('Y-m-d'); ?>" id="dedline" name="dedline" class="date"/>
-                                            </td>
-                                            <td>
-                                                <select id="status" style="min-width: 130px; width: 130px;" name="status" class="status">
-                                                    <option selected value="work">В работе</option>
-                                                    <option value="work">В работе</option>
-                                                    <option value="completed">Завершена</option>
-                                                    <option value="important">Важно</option>
-                                                </select>
-                                            </td>
-                                            <td>
-                                                <button style="width:200px;height:50px" class="primary__btn price__filter--btn" type="submit">Добавить</button>
-                                            </td>
-                                        </tr>
-                                        </form>
-                                        @foreach ($info as $value) 
-                                            <tr>
-                                                <form action="/work/public/update" method="post">
-                                                    @csrf
-                                                    @method('patch')
-                                                    <input type="hidden" name="id" value="{{ $value['id'] }}">
-                                                    <td class="col-id-no" scope="row"><textarea rows='3' cols='20' type=text name="title" class="title">{{ $value['title'] }}</textarea></td>
-                                                    <td class="col-id-no" scope="row"><textarea rows='3' cols='20' type=text name="content" class="content">{{ $value['content'] }}</textarea></td>
-                                                    <td><input type="date" value="{{ $value['date'] }}" id="date" name="date" class="date"/></td>
-                                                    <td><input type="date" value="{{ $value['dedline'] }}" id="dedline" name="dedline" class="dedline"/></td>
-                                                    <td>   
-                                                        <select id="fruits" style="min-width: 200px; width: 200px;" name="status" class="correspondent">
-                                                            <option selected value="{{ $value['status'] }}">{{ $status[$value['status']] }}</option>
-                                                            <option value="work">В работе</option>
-                                                            <option value="completed">Завершена</option>
-                                                            <option value="important">Важно</option>
-                                                        </select>
-                                                    </td>
-                                                    <td><button style="width:200px;height:50px" class="primary__btn price__filter--btn" type="submit">Изменить</button></td>
-                                                </form>
-                                                <form action="/work/public/delete" method="post">
-                                                    @csrf 
-                                                    @method('delete')
-                                                    <input type="hidden" name="id" value="{{ $value['id'] }}">
-                                                    <td><button style="width:200px;height:50px" class="primary__btn price__filter--btn" type="submit">Удалить</button></td>
-                                                </form>
-                                            </tr>
-                                        @endforeach    
-                                    </tbody>
-                                </table>
-                                
-                                </br>
-                                <p><b>*Для информации:</b> Тестовое задание...</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 
                 
             </div>                   
@@ -296,6 +206,7 @@
   
 </body>
 </html>
+
 
 
 
