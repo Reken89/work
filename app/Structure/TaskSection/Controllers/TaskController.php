@@ -23,29 +23,25 @@ class TaskController extends Controller
      * Получаем все задачи из таблицы tasks
      *
      * @param 
-     * @return view
+     * @return json
      */
     public function ReadTasks()
     {
-        $info = $this->action(TaskRead::class)->SelectAllTasks();  
-        return view('task.show', ['info' => $info]);      
+        $result = $this->action(TaskRead::class)->SelectAllTasks();   
+        return  response()->json($result);
     }
     
     /**
      * Добавляем запись в таблицу tasks
      *
      * @param TaskAddRequest $request
-     * @return
+     * @return bool
      */
     public function AddTask(TaskAddRequest $request)
     {
         $dto = TaskAddDto::fromRequest($request);
         $result = $this->action(TaskAdd::class)->TaskAdd($dto);
-        if($result == true){
-            return redirect('/read');  
-        }else{
-            echo "Возникла ошибка записи";
-        }
+        return $result;
               
     }
     
@@ -53,34 +49,26 @@ class TaskController extends Controller
      * Удаляем запись в таблице tasks
      *
      * @param TaskDeleteRequest $request
-     * @return
+     * @return bool
      */
     public function DeleteTask(TaskDeleteRequest $request)
     {       
         $dto = TaskDeleteDto::fromRequest($request);
         $result = $this->action(TaskDelete::class)->Delete($dto);
-        if($result == true){
-            return redirect('/read');  
-        }else{
-            echo "Возникла ошибка удаления";
-        }          
+        return $result;        
     }
     
     /**
      * Обновляем запись в таблице tasks
      *
      * @param TaskUpdateRequest $request
-     * @return
+     * @return bool
      */
     public function UpdateTask(TaskUpdateRequest $request)
     {       
         $dto = TaskUpdateDto::fromRequest($request);
         $result = $this->action(TaskUpdate::class)->Update($dto);
-        if($result == true){
-            return redirect('/read');  
-        }else{
-            echo "Возникла ошибка обновления записи";
-        }        
+        return $result;  
     }
     
     /**
